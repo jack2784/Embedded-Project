@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" type="text/css" href="feeder.css" media="screen" />
+</head>
+
+<body>
+
+  <h2 id="bowlStatus">Initialising</h2>
+
+  <br><br>
+
+  <button id="button" class="button" onclick="OpenForX(2)">Small Bowl</button>
+
+  <button id="button" class="button" onclick="OpenForX(4)">Medium Bowl</button>
+
+  <button id="button" class="button" onclick="OpenForX(slider.value)">Large Bowl</button>
+
+  <div class="slidecontainer">
+    <p>Custom Amount</p>
+    <input type="range" min="1" max="15" value="8" class="slider" id="mySlider">
+  </div>
+
+  <button id="buttonSlider" class="button" onclick="OpenForX(7)">Custom Bowl</button>
+
+  <script type="text/javascript">
+
+    var slider = document.getElementById("mySlider");
+
+    var deviceID = "380021000847373336323230";
+
+    var accessToken = "eed5126cc1c5b743e2f67c9d00e6299b32476ec5";
+
+    var setFunc = "setpos";
+
+    var openFunc = "OpenForX"
+
+    window.setInterval(function() {
+
+      var deviceID = "380021000847373336323230";
+      var accessToken = "eed5126cc1c5b743e2f67c9d00e6299b32476ec5";
+      var varName = "analogvalue";
+
+      requestURL = "https://api.spark.io/v1/devices/" + deviceID + "/" + varName + "/?access_token=" + accessToken;
+      $.getJSON(requestURL, function(json) {
+        console.log(json.result);
+
+        if (json.result > 1390) {
+          document.body.style.backgroundColor = "#90ff8c";
+          document.getElementById("bowlStatus").innerHTML = "The bowl is: Full";
+        } else {
+          document.body.style.backgroundColor = "#ff7a7a";
+          document.getElementById("bowlStatus").innerHTML = "The Bowl is: Empty";
+        }
+      });
+
+    }, 1000);
+
+    function sparkSetPos(newValue) {
+
+      var requestURL = "https://api.spark.io/v1/devices/" + deviceID + "/" + setFunc + "/";
+
+      $.post(requestURL, {
+        params: newValue,
+        access_token: accessToken
+      });
+    }
+
+    function OpenForX(newValue) {
+
+      var requestURL = "https://api.spark.io/v1/devices/" + deviceID + "/" + openFunc + "/";
+
+      $.post(requestURL, {
+        params: newValue,
+        access_token: accessToken
+      });
+
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+#bowlStatus{
+  text-align: center;
+}
+
+.button{
+  height: 100px;
+  width: 550px;
+  background-color: #8af7d8;
+  border: none;
+  color: Black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  display: block;
+  margin: 10px auto;
+  font-size: 38px;
+  border-radius: 20px;
+}
+
+.button:active{
+    background-color: #62b29b;
+}
+
+.slidecontainer {
+  width: 550px;
+  text-align: center;
+  display: inline-block;
+  display: block;
+  margin: 10px auto;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+p {
+  font-size: 38px;
+}
